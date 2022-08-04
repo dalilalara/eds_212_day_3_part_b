@@ -1,0 +1,44 @@
+---
+title: "Leslie Matrix Example ESD 212 Day 4 Part 1"
+author: "Dalila Lara"
+format: html
+editor: visual
+---
+
+## Leslie Matrix Example
+
+Model population changes using the same example we did in lecture.
+
+```{r}
+# to create a matrix 
+#first make a vector 
+#then wrap into matrix 
+insect_leslie <- matrix(c(0, 0, 600, 0.2, 0, 0, 0, 0.08, 0), 
+                        nrow = 3,
+                        ncol = 3,
+                        byrow = TRUE)
+insect_leslie
+```
+
+```{r}
+# Initial Condition
+insect_y0 <- c(12000, 700, 500)
+```
+
+```{r}
+# Multiplying initial condition times matrix 
+#Estimated population at year 
+#hence year 2 initial condition 
+insect_y1 <- insect_leslie %*% insect_y0
+insect_y1
+```
+
+Estimate population at each life stage at year 2 and year 3 
+```{r}
+insect_y2 <- insect_leslie %*% insect_y1
+insect_y2
+
+insect_y3 <- insect_leslie %*% insect_y2
+insect_y3
+```
+
